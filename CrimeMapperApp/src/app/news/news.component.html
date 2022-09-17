@@ -1,0 +1,71 @@
+<div *ngIf="newsResponse !== undefined && newsResponse.status == 'ok'; then success else no_results"></div>
+<ng-template #success>
+  <div class="articles-table">
+    <table class="table table-striped border accordion" id="accordionExample">
+        <thead class="table-dark">
+          <tr class="accordion-item">
+            <th>Article Number</th>
+            <th>Title</th>
+            <th>Source</th>
+            <th>Description</th>
+            <th>Published At</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <ng-container *ngFor="let article of newsResponse.articles; let i = index">
+          <tr class="accordion-item">
+            <td>{{i + 1}}</td>
+            <td>{{article.title}}</td>
+            <td>{{article.source.name}}</td>
+            <td>{{article.description}}</td>
+            <td>{{article.publishedAt | date: 'medium'}}</td>
+            <td>
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse' + i">
+               </button>
+            </td>
+          </tr>
+            <tr>
+            <td colspan="6" class="hidden-td">
+                <div [attr.id]="'collapse' + i" class="accordion-collapse collapse row container" data-bs-parent="#accordionExample">
+                  <div class="col-md-11">
+                    <div>
+                      <strong>Author: </strong>
+                      <span *ngIf="article.author; else missing_author">{{article.author}}</span>
+                      <ng-template #missing_author>
+                        <span> Not Available </span>
+                      </ng-template>
+                    </div>
+                    <div>
+                      <strong>Content: </strong>
+                      {{article.content}}
+                    </div>
+                  </div>
+                  <div class="col-md-1 d-flex align-items-center">
+                    <a [href]="article.url" class="btn btn-info btn-sm" target="_blank">View Article</a>
+                  </div>
+                </div>
+            </td>
+            </tr>
+        </ng-container>
+        </tbody>
+      </table>
+    </div>           
+    
+    <!-- <div class="overflow-auto" id="overall-articles">
+        <div *ngFor="let article of newsResponse.articles">
+            <app-news-article [article]="article"></app-news-article>
+        </div>
+        <div class="alert alert-info">
+            You have reached the end!
+        </div>
+    </div> -->
+</ng-template>
+
+<ng-template #no_results>
+  <div class="m-3">
+      <div class="alert alert-warning">
+          No relevant articles for your search!
+      </div>
+  </div>
+</ng-template>

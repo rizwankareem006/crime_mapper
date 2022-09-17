@@ -1,0 +1,17 @@
+<div *ngIf="tweet.author_username">
+    <span>Author Username: </span>
+    <span>{{tweet.author_username}}</span>
+</div>
+
+<div *ngIf="tweet.author_name">
+    <span>Author Name: </span>
+    <span>{{tweet.author_name}}</span>
+</div>
+<div>
+    <span>Tweeted On: </span>
+    <span>{{tweet.created_at | date:'medium' }}</span>
+</div>
+<div>
+    <span>Content: </span>
+    <span>{{tweet.content}}</span>
+</div>

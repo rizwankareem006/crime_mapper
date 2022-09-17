@@ -1,0 +1,13 @@
+<h1>Locations</h1>
+<div>
+    <div class="row" *ngFor="let locations_arr of rearranged_locations; let i = index">
+        <div class="col-md-4" *ngFor="let location of locations_arr; let j = index">
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="{{'location' + (i*3+j)}}" 
+                    value="{{location}}" (change)="onChange(location, $event)">
+                <label class="form-check-label" for="{{'location' + (i*3+j)}}">{{location}}</label>
+            </div>
+        </div>
+    </div>
+    
+</div>

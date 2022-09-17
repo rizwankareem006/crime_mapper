@@ -1,0 +1,25 @@
+<div *ngIf="article.source">
+    <span>Source: </span>
+    <span>{{article.source.name}}</span>
+</div>
+
+<div *ngIf="article.author">
+    <span>Author: </span>
+    <span>{{article.author}}</span>
+</div>
+<div *ngIf="article.description">
+    <span>Description: </span>
+    <span>{{article.description}}</span>
+</div>
+<div *ngIf="article.url">
+    <span>URL: </span>
+    <span><a href="{{article.url}}">{{article.url}}</a></span>
+</div>
+<div>
+    <span>Published On: </span>
+    <span>{{article.publishedAt | date:'medium' }}</span>
+</div>
+<div>
+    <span>Content: </span>
+    <span>{{article.content}}</span>
+</div>

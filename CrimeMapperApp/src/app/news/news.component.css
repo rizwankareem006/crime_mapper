@@ -1,0 +1,10 @@
+.hidden-td {
+    margin: 0;
+    padding: 0;
+}
+
+.articles-table {
+    border-radius: 2mm;
+    overflow: hidden;
+    margin-top: 8mm;
+}

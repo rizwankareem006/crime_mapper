@@ -1,0 +1,21 @@
+<div class="text-center" id="overall-heading">
+    <h1 id="articles-tweets-heading" class="mt-3">Articles & Tweets</h1>
+</div>
+<ul class="nav nav-pills nav-fill" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" data-bs-toggle="tab" href="#articles">Articles</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="tab" href="#tweets">Tweets</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="container tab-pane fade active show" id="articles">
+        <app-news [locations]="locations" [crimes]="crimes"></app-news>
+    </div>
+    <div class="container tab-pane fade" id="tweets">
+        <app-tweets [locations]="locations" [crimes]="crimes"></app-tweets>
+    </div>
+</div>
+

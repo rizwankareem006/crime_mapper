@@ -1,0 +1,49 @@
+<div *ngIf="tweetsResponse !== undefined && tweetsResponse.status == 'OK'; then success else no_results"></div>
+<ng-template #success>
+    <div class="tweets-table">
+        <table class="table table-striped border">
+            <thead class="table-dark">
+              <tr class="accordion-item">
+                <th>Tweet Number</th>
+                <th>Author Username</th>
+                <th>Author Name</th>
+                <th>Content</th>
+                <th>Tweeted On</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <ng-container *ngFor="let tweet of tweetsResponse.tweets; let i = index">
+              <tr>
+                <td>{{i + 1}}</td>
+                <td>{{tweet.author_username}}</td>
+                <td>{{tweet.author_name}}</td>
+                <td [innerHTML]="tweet.content"></td>
+                <td>{{tweet.created_at | date: 'medium'}}</td>
+                <td>
+                    <a [href]="'https://twitter.com/' + tweet.author_username + '/status/' + tweet.tweet_id"
+                     class="btn btn-info btn-sm" target="_blank">Visit Tweet</a>
+                </td>
+              </tr>
+            </ng-container>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- <div class="overflow-auto" id="overall-tweets">
+        <div *ngFor="let tweet of tweetsResponse.tweets">
+            <app-tweet-item [tweet]="tweet"></app-tweet-item>
+        </div>
+        <div class="alert alert-info">
+            You have reached the end!
+        </div>
+    </div> -->
+</ng-template>
+
+<ng-template #no_results>
+    <div class="m-3">
+        <div class="alert alert-warning">
+            No relevant tweets for your search!
+        </div>
+    </div>
+</ng-template>

@@ -1,0 +1,16 @@
+<h1 class="pt-2 text-center" style="font-size: xx-large;">Crime Mapper</h1>
+<hr>
+<div id="locations-block">
+    <app-locations [locations]="locations" (locationsChange)="locationsUpdated($event)"></app-locations>
+</div>
+<div id="crime-type-block">
+    <app-crime-type (selectedCrimesChanged)="crimeSelected($event)"></app-crime-type>
+</div>
+<div>
+    <div class="row justify-content-center">
+        <div class="col-md-6 d-flex justify-content-center">
+            <button class="btn btn-primary" [routerLink]="['/second']" 
+            [queryParams]="{locations: changedLocations, crimes: selectedCrimes}">Fetch</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+<div class="container-fluid h-100">
+    <div class="row h-100">
+        <div class="col">
+            <app-maps (locationEmitter)="locations=$event"></app-maps>
+        </div>
+        <div class="col">
+            <app-crime-mapper [locations]="locations"></app-crime-mapper>
+        </div>
+    </div>
+</div>
